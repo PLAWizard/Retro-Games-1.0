@@ -88,6 +88,21 @@
             color: #0ff;
             text-shadow: 0 0 5px #0ff;
         }
+        .home-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #333;
+            color: #0ff;
+            border: 2px solid #0ff;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .home-btn:hover {
+            background: #0ff;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -107,7 +122,6 @@
                 content.innerHTML = `<h2>Games</h2>
                 <p>Click a game to play it in a new window!</p>
                 <div class="game-grid">
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/retro-bowl/index.html')">Retro Bowl</button>
                     <button onclick="openGame('https://nb-ga.github.io/games-site/projects/bitlife/index.html')">Bitlife</button>
                     <button onclick="openGame('https://nb-ga.github.io/games-site/projects/drift-boss/index.html')">Drift Boss</button>
                     <button onclick="openGame('https://nb-ga.github.io/games-site/projects/fnaf-1/index.html')">FNAF 1</button>
@@ -124,7 +138,18 @@
                     <button onclick="openGame('https://nb-ga.github.io/games-site/projects/slope/index.html')">Slope</button>
                     <button onclick="openGame('https://nb-ga.github.io/games-site/projects/mario/index.html')">Mario</button>
                     <button onclick="openGame('https://nb-ga.github.io/games-site/projects/hextris/index.html')">Hextris</button>
+                    <button onclick="openGame('https://josh100.neocities.org/macvg/projects/getaway-shootout/')">Getaway Shootout</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/emulation/SNES/legend-of-zelda-link-to-the-past/index.html')">Zelda: Link to the Past</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/emulation/GBA/legend-of-zelda-minish-cap/index.html')">Zelda: Minish Cap</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/emulation/GBA/pokemon-fire-red/index.html')">Pokemon Fire Red</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/emulation/GBA/pokemon-leaf-green/index.html')">Pokemon Leaf Green</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/emulation/GBA/pokemon-ruby/index.html')">Pokemon Ruby</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/emulation/GBA/pokemon-sapphire/index.html')">Pokemon Sapphire</button>
                 </div>`;
+            } else if (section === 'changelog') {
+                content.innerHTML = `<h2>Changelog</h2><p>Details about the latest updates.</p><button class="home-btn" onclick="showContent('games')">Return to Home</button>`;
+            } else if (section === 'request') {
+                content.innerHTML = `<h2>Request Game</h2><p>Submit your game request here.</p><button class="home-btn" onclick="showContent('games')">Return to Home</button>`;
             }
         }
         function openGame(url) {
