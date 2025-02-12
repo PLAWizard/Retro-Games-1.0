@@ -10,34 +10,38 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            background-color: #222;
-            color: white;
+            background: linear-gradient(135deg, #222, #111);
+            color: #0ff;
         }
         .header {
-            background: #ffcc00;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
             padding: 20px;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            color: black;
+            color: white;
+            text-shadow: 0 0 10px #fff;
             animation: fadeIn 2s ease-in-out;
         }
         .nav {
+            display: flex;
+            justify-content: center;
             margin-top: 20px;
+            gap: 15px;
         }
         .nav button {
-            background: #444;
-            color: white;
-            border: none;
+            background: #333;
+            color: #0ff;
+            border: 2px solid #0ff;
             padding: 15px 30px;
-            margin: 10px;
             font-size: 18px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 10px;
             transition: 0.3s;
-            animation: slideIn 1s ease-in-out;
+            box-shadow: 0 0 10px #0ff;
+            animation: bobbing 1.5s infinite alternate;
         }
         .nav button:hover {
-            background: #ffcc00;
+            background: #0ff;
             color: black;
             transform: scale(1.1);
         }
@@ -46,42 +50,43 @@
             font-size: 20px;
             animation: fadeIn 1.5s ease-in-out;
         }
-        .game-list button {
-            display: block;
-            width: 80%;
-            margin: 10px auto;
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            justify-items: center;
+        }
+        .game-grid button {
             padding: 15px;
             font-size: 18px;
-            background: #555;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            background: #333;
+            color: #0ff;
+            border: 2px solid #0ff;
+            border-radius: 10px;
             cursor: pointer;
             transition: 0.3s;
+            box-shadow: 0 0 10px #0ff;
+            animation: bobbing 1.5s infinite alternate;
         }
-        .game-list button:hover {
-            background: #ffcc00;
+        .game-grid button:hover {
+            background: #0ff;
             color: black;
-        }
-        iframe {
-            width: 80%;
-            height: 500px;
-            border: none;
-            margin-top: 20px;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        @keyframes bobbing {
+            from { transform: translateY(0); }
+            to { transform: translateY(-5px); }
         }
         .footer {
             margin-top: 50px;
             padding: 10px;
             font-size: 14px;
-            color: gray;
+            color: #0ff;
+            text-shadow: 0 0 5px #0ff;
         }
     </style>
 </head>
@@ -100,43 +105,30 @@
             content.style.animation = 'fadeIn 1s ease-in-out';
             if (section === 'games') {
                 content.innerHTML = `<h2>Games</h2>
-                <p>Click a game to play it below!</p>
-                <div class="game-list">
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/retro-bowl/index.html')">Retro Bowl</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/bitlife/index.html')">Bitlife</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/drift-boss/index.html')">Drift Boss</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/fnaf-1/index.html')">FNAF 1</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/fnaf-2/index.html')">FNAF 2</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/fnaf-3/index.html')">FNAF 3</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/fnaf-5/index.html')">FNAF 5</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/cookie-clicker/index.html')">Cookie Clicker</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/geodash/index.html')">Geometry Dash</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/madalin-stunt-cars-3/index.html')">Madalin Stunt Cars 3</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/madalin-stunt-cars-2/index.html')">Madalin Stunt Cars 2</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/paperio2/index.html')">Paper.io 2</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/tunnel-rush/index.html')">Tunnel Rush</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/pacman/index.html')">Pac-Man</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/slope/index.html')">Slope</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/mario/index.html')">Mario</button>
-                    <button onclick="loadGame('https://nb-ga.github.io/games-site/projects/hextris/index.html')">Hextris</button>
-                </div>
-                <iframe id="gameFrame"></iframe>`;
-            } else if (section === 'changelog') {
-                content.innerHTML = `<h2>Changelog</h2>
-                <p>Check out the latest updates and changes!</p>
-                <ul>
-                    <li>Added multiple new games to the list.</li>
-                </ul>`;
-            } else if (section === 'request') {
-                content.innerHTML = `<h2>Request a Game</h2>
-                <p>Suggest a game to be added to the site.</p>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScPxq6XrvMBXWLuAX62zEzn82jJkXKhDvJFqF31P4pqgNK4dw/viewform?embedded=true" 
-                    width="640" height="427" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`;
+                <p>Click a game to play it in a new window!</p>
+                <div class="game-grid">
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/retro-bowl/index.html')">Retro Bowl</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/bitlife/index.html')">Bitlife</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/drift-boss/index.html')">Drift Boss</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/fnaf-1/index.html')">FNAF 1</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/fnaf-2/index.html')">FNAF 2</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/fnaf-3/index.html')">FNAF 3</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/fnaf-5/index.html')">FNAF 5</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/cookie-clicker/index.html')">Cookie Clicker</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/geodash/index.html')">Geometry Dash</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/madalin-stunt-cars-3/index.html')">Madalin Stunt Cars 3</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/madalin-stunt-cars-2/index.html')">Madalin Stunt Cars 2</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/paperio2/index.html')">Paper.io 2</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/tunnel-rush/index.html')">Tunnel Rush</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/pacman/index.html')">Pacman</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/slope/index.html')">Slope</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/mario/index.html')">Mario</button>
+                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/hextris/index.html')">Hextris</button>
+                </div>`;
             }
         }
-
-        function loadGame(url) {
-            document.getElementById('gameFrame').src = url;
+        function openGame(url) {
+            window.open(url, '_blank');
         }
     </script>
 </body>
