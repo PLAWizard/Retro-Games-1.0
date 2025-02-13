@@ -58,6 +58,32 @@
             padding: 20px;
             justify-items: center;
         }
+        .search-bar {
+            padding: 10px;
+            width: 80%;
+            font-size: 18px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: 2px solid #0ff;
+            background-color: #333;
+            color: #fff;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        .color-options {
+            margin: 10px;
+        }
+        .color-options button {
+            margin: 10px;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+        .color-options button:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -70,12 +96,16 @@
     </div>
     <div class="content" id="content">Welcome to Retro Unblocked!</div>
 
+    <div id="searchContainer" style="display: none;">
+        <input class="search-bar" type="text" id="search" placeholder="Search Games..." oninput="searchGames()">
+    </div>
+
     <script>
         function showContent(section) {
             let content = document.getElementById('content');
             if (section === 'games') {
                 content.innerHTML = `<h2>Games</h2>
-                <div class="game-grid">
+                <div class="game-grid" id="gameGrid">
                     <button onclick="openGame('https://skys.follobusiness.com/semag/pokemon/index.html')">Pokemon</button>
                     <button onclick="openGame('https://skys.follobusiness.com/semag/1v1lol/index.html')">1v1.lol</button>
                     <button onclick="openGame('https://skys.follobusiness.com/semag/amazing-rope-police/index.html')">Amazing Rope Police</button>
@@ -92,11 +122,30 @@
                     <button onclick="openGame('https://skys.follobusiness.com/semag/polytrack/index.html')">Poly Track</button>
                     <button onclick="openGame('https://skys.follobusiness.com/semag/monkeymart/index.html')">Monkey Mart</button>
                     <button onclick="openGame('https://skys.follobusiness.com/semag/paperio/index.html')">Paper.io</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/snowrider3d/index.html')">Snow Rider 3D</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/sppa/11/index.html')">Windows 11</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/stickmanclimb/index.html')">Stickman Climb</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/madalincars/index.html')">Madalin Cars</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/drift-boss/index.html')">Drift Boss</button>
                 </div>`;
+                document.getElementById('searchContainer').style.display = 'block'; // Show the search bar
             } else if (section === 'changelog') {
                 content.innerHTML = `<h2>Changelog</h2><p>Updates will be listed here.</p>`;
+                document.getElementById('searchContainer').style.display = 'none'; // Hide search bar
             } else if (section === 'request') {
                 content.innerHTML = `<h2>Request a Game</h2><p>Coming soon!</p>`;
+                document.getElementById('searchContainer').style.display = 'none'; // Hide search bar
+            } else if (section === 'settings') {
+                content.innerHTML = `<h2>Settings</h2>
+                    <div class="color-options">
+                        <button onclick="changeColors('#1a1a2e', '#0ff')">Default</button>
+                        <button onclick="changeColors('#ff4f4f', '#000')">Red Theme</button>
+                        <button onclick="changeColors('#4f9cff', '#fff')">Blue Theme</button>
+                        <button onclick="changeColors('#50b636', '#fff')">Green Theme</button>
+                        <button onclick="changeColors('#ffed00', '#000')">Yellow Theme</button>
+                    </div>
+                    <button onclick="resetSettings()">Reset Settings</button>`;
+                document.getElementById('searchContainer').style.display = 'none'; // Hide search bar
             }
         }
 
@@ -105,7 +154,42 @@
         }
 
         function showSettings() {
-            alert("Settings panel will be added soon!");
+            showContent('settings');
+        }
+
+        function searchGames() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const gameButtons = document.querySelectorAll('.game-grid button');
+            gameButtons.forEach(button => {
+                const gameName = button.innerText.toLowerCase();
+                if (gameName.includes(query)) {
+                    button.style.display = 'block';
+                } else {
+                    button.style.display = 'none';
+                }
+            });
+        }
+
+        function changeColors(background, textColor) {
+            document.body.style.background = background;
+            document.body.style.color = textColor;
+            document.querySelectorAll("button").forEach(btn => {
+                btn.style.backgroundColor = background;
+                btn.style.color = textColor;
+            });
+            document.getElementById('search').style.backgroundColor = background;
+            document.getElementById('search').style.color = textColor;
+        }
+
+        function resetSettings() {
+            document.body.style.background = "linear-gradient(135deg, #1a1a2e, #16213e)";
+            document.body.style.color = "#0ff";
+            document.querySelectorAll("button").forEach(btn => {
+                btn.style.backgroundColor = "#333";
+                btn.style.color = "#0ff";
+            });
+            document.getElementById('search').style.backgroundColor = "#333";
+            document.getElementById('search').style.color = "#fff";
         }
     </script>
 </body>
