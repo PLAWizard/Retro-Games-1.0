@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retro Unblocked</title>
-
-    <!-- Favicon -->
-    <link rel="icon" href="https://lh6.googleusercontent.com/uUx9bGb_jlLwySF9VwAomRpbiLujX8DsycUNjsGcssf9xfwQ1rUbs901WNeKXoyQZyaXlI5xP6jpiFavTD-ttgg6UMJVfh1hiVlTNtEaaQkfkqioFFYxPerqGwaTL0xz7g=w1280" type="image/png">
-
+    <link rel="icon" href="https://lh6.googleusercontent.com/uUx9bGb_jlLwySF9VwAomRpbiLujX8DsycUNjsGcssf9xfwQ1rUbs901WNeKXoyQZyaXlI5xP6jpiFavTD-ttgg6UMJVfh1hiVlTNtEaaQkfkqioFFYxPerqGwaTL0xz7g=w1280">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
-            background: linear-gradient(135deg, #222, #111);
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
             color: #0ff;
         }
         .header {
@@ -24,7 +21,6 @@
             font-weight: bold;
             color: white;
             text-shadow: 0 0 10px #fff;
-            animation: fadeIn 2s ease-in-out;
         }
         .nav {
             display: flex;
@@ -42,7 +38,6 @@
             border-radius: 10px;
             transition: 0.3s;
             box-shadow: 0 0 10px #0ff;
-            animation: bobbing 1.5s infinite alternate;
         }
         .nav button:hover {
             background: #0ff;
@@ -52,7 +47,6 @@
         .content {
             margin-top: 50px;
             font-size: 20px;
-            animation: fadeIn 1.5s ease-in-out;
         }
         .game-grid {
             display: grid;
@@ -62,35 +56,25 @@
             justify-items: center;
         }
         .game-grid button {
-            padding: 15px;
+            width: 200px;
+            height: 60px;
             font-size: 18px;
-            background: #333;
+            background: #444;
             color: #0ff;
             border: 2px solid #0ff;
             border-radius: 10px;
             cursor: pointer;
             transition: 0.3s;
             box-shadow: 0 0 10px #0ff;
-            animation: bobbing 1.5s infinite alternate;
+            animation: bounce 1.5s infinite alternate ease-in-out;
         }
         .game-grid button:hover {
             background: #0ff;
             color: black;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes bobbing {
-            from { transform: translateY(0); }
-            to { transform: translateY(-5px); }
-        }
-        .footer {
-            margin-top: 50px;
-            padding: 10px;
-            font-size: 14px;
-            color: #0ff;
-            text-shadow: 0 0 5px #0ff;
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
         }
     </style>
 </head>
@@ -102,41 +86,31 @@
         <button onclick="showContent('request')">Request Game</button>
     </div>
     <div class="content" id="content">Welcome to Retro Unblocked!</div>
-    <div class="footer">&copy; 2025 Retro Unblocked. All rights reserved.</div>
     <script>
         function showContent(section) {
             let content = document.getElementById('content');
-            content.style.animation = 'fadeIn 1s ease-in-out';
             if (section === 'games') {
                 content.innerHTML = `<h2>Games</h2>
-                <p>Click a game to play it in a new window!</p>
                 <div class="game-grid">
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/retro-bowl/index.html')">Retro Bowl</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/bitlife/index.html')">Bitlife</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/drift-boss/index.html')">Drift Boss</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/fnaf-1/index.html')">FNAF 1</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/fnaf-2/index.html')">FNAF 2</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/fnaf-3/index.html')">FNAF 3</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/fnaf-5/index.html')">FNAF 5</button>
-                    <button onclick="openGame('https://o.global.ssl.fastly.net/g/assets/cookie-clicker/index.html')">Cookie Clicker</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/geodash/index.html')">Geometry Dash</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/madalin-stunt-cars-3/index.html')">Madalin Stunt Cars 3</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/madalin-stunt-cars-2/index.html')">Madalin Stunt Cars 2</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/paperio2/index.html')">Paper.io 2</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/tunnel-rush/index.html')">Tunnel Rush</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/pacman/index.html')">Pacman</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/slope/index.html')">Slope</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/mario/index.html')">Mario</button>
-                    <button onclick="openGame('https://nb-ga.github.io/games-site/projects/hextris/index.html')">Hextris</button>
-                    <button onclick="openGame('https://o.global.ssl.fastly.net/g/assets/1v1lol/index.html')">1v1.LOL</button>
-                    <button onclick="openGame('https://o.global.ssl.fastly.net/g/assets/basketball-stars/index.html')">Basketball Stars</button>
-                    <button onclick="openGame('https://o.global.ssl.fastly.net/g/assets/drift-hunters/index.html')">Drift Hunters</button>
-                    <button onclick="openGame('https://o.global.ssl.fastly.net/g/assets/scrapmetal/index.html')">Scrap Metal</button>
-                    <button onclick="openGame('https://o.global.ssl.fastly.net/g/assets/amazing-rope-police/index.html')">Amazing Rope Police</button>
-                    <button onclick="openGame('https://o.global.ssl.fastly.net/g/assets/boxing-random/index.html')">Boxing Random</button>
-                    <button 
-onclick="openGame('https://o.global.ssl.fastly.net/g/assets/minecraft-15/index.html')">Minecraft</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/pokemon/index.html')">Pokemon</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/1v1lol/index.html')">1v1.lol</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/amazing-rope-police/index.html')">Amazing Rope Police</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/basketball-stars/index.html')">Basketball Stars</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/bitlife/index.html')">Bitlife</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/cookieclicker/index.html')">Cookie Clicker</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/drifthunters/index.html')">Drift Hunters</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/drivemad/index.html')">Drive Mad</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/tabs/index.html')">TABS</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/gladihoppers/index.html')">Gladihoppers</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/ocarinaoftime/index.html')">Ocarina of Time</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/eaglercraft/index.html')">Eaglercraft</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/ovo/index.html')">OVO</button>
+                    <button onclick="openGame('https://skys.follobusiness.com/semag/polytrack/index.html')">Poly Track</button>
                 </div>`;
+            } else if (section === 'changelog') {
+                content.innerHTML = `<h2>Changelog</h2><p>Updates will be listed here.</p>`;
+            } else if (section === 'request') {
+                content.innerHTML = `<h2>Request a Game</h2><p>coming soon!</p>`;
             }
         }
         function openGame(url) {
