@@ -130,10 +130,19 @@
                 </div>`;
                 document.getElementById('searchContainer').style.display = 'block'; // Show the search bar
             } else if (section === 'changelog') {
-                content.innerHTML = `<h2>Changelog</h2><p>Updates will be listed here.</p>`;
+                content.innerHTML = `<h2>Changelog</h2>
+                    <ul>
+                        <li>Added the ability to change the background and text colors from the settings.</li>
+                        <li>Implemented more color variations for the theme (Red, Blue, Green, Yellow).</li>
+                        <li>Search bar now only appears when the "Games" button is clicked.</li>
+                        <li>Buttons now animate with a scaling effect when hovered over.</li>
+                        <li>All buttons and elements aligned properly for a cleaner layout.</li>
+                        <li>Created a reset button to revert settings back to default.</li>
+                    </ul>`;
                 document.getElementById('searchContainer').style.display = 'none'; // Hide search bar
             } else if (section === 'request') {
-                content.innerHTML = `<h2>Request a Game</h2><p>Coming soon!</p>`;
+                content.innerHTML = `<h2>Request a Game</h2>
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScSAzH0fxhqhj2s_sypXYFnCp6Ugnuhk4Wb2PLA3ZR9fkNe9A/viewform?embedded=true" width="640" height="430" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`;
                 document.getElementById('searchContainer').style.display = 'none'; // Hide search bar
             } else if (section === 'settings') {
                 content.innerHTML = `<h2>Settings</h2>
