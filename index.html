@@ -352,6 +352,7 @@
     <div class="nav">
         <button onclick="showContent('games')">Games</button>
         <button onclick="showContent('changelog')">Changelog</button>
+        <button onclick="showContent('news')">News</button>
         <button onclick="showContent('request')">Request Game</button>
         <button onclick="showContent('settings')">Settings</button>
     </div>
@@ -453,6 +454,12 @@
             "2025-2-19: Added a new category *Horror* and added some new games like FNAF 1 through 4.",
         ];
 
+        // News Data
+        const news = [
+            "2025-02-20: Added a News section to keep you updated!",
+            "2025-02-20: More games coming soon!",
+        ];
+
         // Show Content Function
         function showContent(section) {
             let content = document.getElementById('content');
@@ -470,6 +477,14 @@
                     content.innerHTML = `<h2>Changelog</h2>
                     <ul>
                         ${changelog.map(entry => `<li>${entry}</li>`).join('')}
+                    </ul>`;
+                    document.getElementById('searchContainer').style.display = 'none';
+                    document.getElementById('categoryButtons').style.display = 'none';
+                    document.getElementById('randomGameButton').style.display = 'none'; // Hide Random Game Button
+                } else if (section === 'news') {
+                    content.innerHTML = `<h2>News</h2>
+                    <ul>
+                        ${news.map(entry => `<li>${entry}</li>`).join('')}
                     </ul>`;
                     document.getElementById('searchContainer').style.display = 'none';
                     document.getElementById('categoryButtons').style.display = 'none';
