@@ -352,7 +352,6 @@
     <div class="nav">
         <button onclick="showContent('games')">Games</button>
         <button onclick="showContent('changelog')">Changelog</button>
-        <button onclick="showContent('news')">News</button>
         <button onclick="showContent('request')">Request Game</button>
         <button onclick="showContent('settings')">Settings</button>
     </div>
@@ -395,11 +394,16 @@
     <script>
         // Games List with Categories
         const games = [
-            { name: "Twitch", url: "https://dexter.is.sigma.df.webconstructions.co.uk/uv/service/hvtrs8%2F-wuw%2Ctuivcj.vv-", category: "apps" }
+            { name: "Twitch", url: "https://dexter.is.sigma.df.webconstructions.co.uk/uv/service/hvtrs8%2F-wuw%2Ctuivcj.vv-", category: "apps" },
             { name: "Fortnite", url: "https://dexter.is.sigma.df.webconstructions.co.uk/uv/service/hvtrs8%2F-pna%7B.eedopcgnmw%2Ccmm-mcln%2F!%2Ffegpnilk%3Dgcmg-kd%3F44bda%6004-f844%2F445f-%3Be76%2F2f9g47cfeg0c", category: "action" },
             { name: "Pokemon", url: "https://skys.follobusiness.com/semag/pokemon/index.html", category: "apps" },
             { name: "YouTube", url: "https://dexter.is.sigma.df.webconstructions.co.uk/uv/service/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-", category: "apps" },
             { name: "ROBLOX", url: "https://dexter.is.sigma.df.webconstructions.co.uk/uv/service/hvtrs8%2F-rgnfepiqgcy%2Colrgnfep.aoo%2F", category: "apps" },
+            { name: "1v1.lol", url: "https://skys.follobusiness.com/semag/1v1lol/index.html", category: "action" },
+            { name: "Amazing Rope Police", url: "https://skys.follobusiness.com/semag/amazing-rope-police/index.html", category: "puzzle" },
+            { name: "Basketball Stars", url: "https://skys.follobusiness.com/semag/basketball-stars/index.html", category: "sports" },
+            { name: "Bitlife", url: "https://skys.follobusiness.com/semag/bitlife/index.html", category: "puzzle" },
+            { name: "Cookie Clicker", url: "https://skys.follobusiness.com/semag/cookieclicker/index.html", category: "puzzle" },
             { name: "Drift Hunters", url: "https://skys.follobusiness.com/semag/drifthunters/index.html", category: "sports" },
             { name: "Drive Mad", url: "https://skys.follobusiness.com/semag/drivemad/index.html", category: "action" },
             { name: "StackTris", url: "https://dexter.is.sigma.df.webconstructions.co.uk/data/g/stacktris/", category: "puzzle" },
@@ -433,12 +437,6 @@
             { name: "fnaf 4", url: "https://skys.follobusiness.com/semag/fnaf4/index.html", category: "horror" },
             { name: "FunnyShooter1", url: "https://skys.follobusiness.com/semag/funnyshooter/index.html", category: "shooting" },
             { name: "FunnyShooter2", url: "https://skys.follobusiness.com/semag/funnyshooter2/index.html", category: "shooting" },
-            { name: "1v1.lol", url: "https://skys.follobusiness.com/semag/1v1lol/index.html", category: "shooting" },
-            { name: "AmazingRopePolice", url: "https://skys.follobusiness.com/semag/fnaf2/index.html", category: "shooting" },
-            { name: "BasketBallStars", url: "https://skys.follobusiness.com/semag/basketball-stars/index.html", category: "sports" },
-            { name: "Bitlife", url: "https://skys.follobusiness.com/semag/bitlife/index.html", category: "puzzle" },
-            { name: "Cookie Cliker", url: "https://skys.follobusiness.com/semag/cookieclicker/index.html", category: "puzzle" },
-            { name: "GlassCity", url: "https://dexter.is.sigma.df.webconstructions.co.uk/data/g/glasscity/", category: "action" },
         ];
 
         // Changelog Data
@@ -453,12 +451,6 @@
             "2025-2-14: Updated changelog to include all changes and additions.",
             "2025-2-16: Started work on the 1.1 upcoming update.",
             "2025-2-19: Added a new category *Horror* and added some new games like FNAF 1 through 4.",
-        ];
-
-        // News Data
-        const news = [
-            "We are having he new release update for retro 1.1!",
-            "By the end of this month we will be having many changes like proxies being added and 200+ games!",
         ];
 
         // Show Content Function
@@ -478,14 +470,6 @@
                     content.innerHTML = `<h2>Changelog</h2>
                     <ul>
                         ${changelog.map(entry => `<li>${entry}</li>`).join('')}
-                    </ul>`;
-                    document.getElementById('searchContainer').style.display = 'none';
-                    document.getElementById('categoryButtons').style.display = 'none';
-                    document.getElementById('randomGameButton').style.display = 'none'; // Hide Random Game Button
-                } else if (section === 'news') {
-                    content.innerHTML = `<h2>News</h2>
-                    <ul>
-                        ${news.map(entry => `<li>${entry}</li>`).join('')}
                     </ul>`;
                     document.getElementById('searchContainer').style.display = 'none';
                     document.getElementById('categoryButtons').style.display = 'none';
