@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retro Unblocked</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5549199309594373" crossorigin="anonymous"></script>
     <link rel="icon" href="https://lh6.googleusercontent.com/3LuQ6JmqjSl-cfOoa7d7wvI6UMBHemY2ZC2pjSiMNdWbGBE5K_iVAHXO2TSEjU21nnxSJ8odiahwddDeWFynK_c=w1280">
     <style>
         /* Global Styles */
@@ -372,6 +373,9 @@
         <button onclick="filterGames('action')">Action</button>
         <button onclick="filterGames('puzzle')">Puzzle</button>
         <button onclick="filterGames('sports')">Sports</button>
+        <button onclick="filterGames('horror')">Horror</button>
+        <button onclick="filterGames('shooting')">Shooting</button>
+    </div>
     </div>
 
     <!-- Floating Shapes -->
@@ -390,7 +394,11 @@
     <script>
         // Games List with Categories
         const games = [
-            { name: "Pokemon", url: "https://skys.follobusiness.com/semag/pokemon/index.html", category: "action" },
+            { name: "Twitch", url: "https://dexter.is.sigma.df.webconstructions.co.uk/uv/service/hvtrs8%2F-wuw%2Ctuivcj.vv-", category: "apps" },
+            { name: "Fortnite", url: "https://dexter.is.sigma.df.webconstructions.co.uk/uv/service/hvtrs8%2F-pna%7B.eedopcgnmw%2Ccmm-mcln%2F!%2Ffegpnilk%3Dgcmg-kd%3F44bda%6004-f844%2F445f-%3Be76%2F2f9g47cfeg0c", category: "action" },
+            { name: "Pokemon", url: "https://skys.follobusiness.com/semag/pokemon/index.html", category: "apps" },
+            { name: "YouTube", url: "https://dexter.is.sigma.df.webconstructions.co.uk/uv/service/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-", category: "apps" },
+            { name: "ROBLOX", url: "https://dexter.is.sigma.df.webconstructions.co.uk/uv/service/hvtrs8%2F-rgnfepiqgcy%2Colrgnfep.aoo%2F", category: "apps" },
             { name: "1v1.lol", url: "https://skys.follobusiness.com/semag/1v1lol/index.html", category: "action" },
             { name: "Amazing Rope Police", url: "https://skys.follobusiness.com/semag/amazing-rope-police/index.html", category: "puzzle" },
             { name: "Basketball Stars", url: "https://skys.follobusiness.com/semag/basketball-stars/index.html", category: "sports" },
@@ -398,6 +406,7 @@
             { name: "Cookie Clicker", url: "https://skys.follobusiness.com/semag/cookieclicker/index.html", category: "puzzle" },
             { name: "Drift Hunters", url: "https://skys.follobusiness.com/semag/drifthunters/index.html", category: "sports" },
             { name: "Drive Mad", url: "https://skys.follobusiness.com/semag/drivemad/index.html", category: "action" },
+            { name: "StackTris", url: "https://dexter.is.sigma.df.webconstructions.co.uk/data/g/stacktris/", category: "puzzle" },
             { name: "TABS", url: "https://skys.follobusiness.com/semag/tabs/index.html", category: "action" },
             { name: "Gladihoppers", url: "https://skys.follobusiness.com/semag/gladihoppers/index.html", category: "action" },
             { name: "Ocarina of Time", url: "https://skys.follobusiness.com/semag/ocarinaoftime/index.html", category: "action" },
@@ -415,19 +424,33 @@
             { name: "Kick That Buddy", url: "https://skys.follobusiness.com/semag/kickthatbuddy/index.html", category: "action" },
             { name: "MajorasMask", url: "https://skys.follobusiness.com/semag/majorasmask/index.html", category: "action" },
             { name: "Rooftop Snipers 2", url: "https://skys.follobusiness.com/semag/rooftopsnipers2/index.html", category: "sports" },
-            { name: "Time Shooter 3", url: "https://skys.follobusiness.com/semag/timeshooter3/index.html", category: "action" }
+            { name: "RandomFacts", url: "https://plawizard.github.io/RandomFactsGenerator/", category: "puzzle" },
+            { name: "Jetpack Joyride", url: "https://skys.follobusiness.com/semag/jetpackjoyride/index.html", category: "puzzle" },
+            { name: "Rocket League", url: "https://skys.follobusiness.com/semag/2drocketleague/index.html", category: "sports" },
+            { name: "Retro Bowl", url: "https://skys.follobusiness.com/semag/retrobowl/index.html", category: "sports" },
+            { name: "Retro Bowl College", url: "https://skys.follobusiness.com/semag/retrobowlcollege/index.html", category: "sports" },
+            { name: "Fancy Pants 2", url: "https://skys.follobusiness.com/semag/fancypantsadventures2/index.html", category: "sports" },
+            { name: "Just Fall.lol", url: "https://skys.follobusiness.com/semag/justfalllol/index.html", category: "sports" },
+            { name: "fnaf", url: "https://skys.follobusiness.com/semag/fnaf/index.html", category: "horror" },
+            { name: "fnaf 2", url: "https://skys.follobusiness.com/semag/fnaf2/index.html", category: "horror" },
+            { name: "fnaf 3", url: "https://skys.follobusiness.com/semag/fnaf3/index.html", category: "horror" },
+            { name: "fnaf 4", url: "https://skys.follobusiness.com/semag/fnaf4/index.html", category: "horror" },
+            { name: "FunnyShooter1", url: "https://skys.follobusiness.com/semag/funnyshooter/index.html", category: "shooting" },
+            { name: "FunnyShooter2", url: "https://skys.follobusiness.com/semag/funnyshooter2/index.html", category: "shooting" },
         ];
 
         // Changelog Data
         const changelog = [
-            "2024-10-14: Initial release of Retro Unblocked.",
+            "2024-12-14: Initial release of Retro Unblocked.",
             "2025-1-02: Added Dark Mode / Light Mode Toggle.",
             "2025-1-03: Added Random Game Button.",
             "2025-2-04: Organized games into categories (Action, Puzzle, Sports).",
             "2025-2-04: Improved animations and transitions.",
             "2025-2-11: Added more color options to Settings.",
             "2025-2-13: Fixed Random Game Button functionality.",
-            "2025-2-14: Updated changelog to include all changes and additions."
+            "2025-2-14: Updated changelog to include all changes and additions.",
+            "2025-2-16: Started work on the 1.1 upcoming update.",
+            "2025-2-19: Added a new category *Horror* and added some new games like FNAF 1 through 4.",
         ];
 
         // Show Content Function
