@@ -115,7 +115,6 @@
             transition: all 0.3s ease;
             box-shadow: 0 0 10px #fff;
             animation: bob 2s infinite;
-            position: relative;
         }
 
         .game-grid button:hover {
@@ -123,15 +122,6 @@
             color: #000;
             transform: scale(1.1);
             box-shadow: 0 0 20px #fff;
-        }
-
-        .heart {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            color: #ff69b4;
-            cursor: pointer;
         }
 
         /* Search Bar */
@@ -321,7 +311,6 @@
         <button onclick="filterGames('horror')">Horror</button>
         <button onclick="filterGames('shooting')">Shooting</button>
         <button onclick="filterGames('cars')">Cars</button>
-        <button onclick="filterGames('favorites')">Favorites</button>
     </div>
 
     <!-- Floating Shapes -->
@@ -438,17 +427,11 @@
                 if (section === 'games') {
                     content.innerHTML = `<h2>Games</h2>
                     <div class="game-grid" id="gameGrid">
-                        ${games.map(game => `
-                            <button onclick="openGame('${game.url}')" id="${game.name}">
-                                ${game.name}
-                                <span class="heart" onclick="toggleFavorite('${game.name}')">&#10084;</span>
-                            </button>
-                        `).join('')}
+                        ${games.map(game => `<button onclick="openGame('${game.url}')">${game.name}</button>`).join('')}
                     </div>`;
                     document.getElementById('searchContainer').style.display = 'block';
                     document.getElementById('categoryButtons').style.display = 'flex';
                     document.getElementById('randomGameButton').style.display = 'block'; // Show Random Game Button
-                    loadFavorites();
                 } else if (section === 'changelog') {
                     content.innerHTML = `<h2>Changelog</h2>
                     <ul>
@@ -512,16 +495,6 @@
                     document.getElementById('searchContainer').style.display = 'none';
                     document.getElementById('categoryButtons').style.display = 'none';
                     document.getElementById('randomGameButton').style.display = 'none'; // Hide Random Game Button
-                } else if (section === 'favorites') {
-                    content.innerHTML = `
-                    <h2>Favorites</h2>
-                    <div class="game-grid" id="favoriteGames">
-                    </div>
-                    `;
-                    document.getElementById('searchContainer').style.display = 'none';
-                    document.getElementById('categoryButtons').style.display = 'none';
-                    document.getElementById('randomGameButton').style.display = 'none'; // Hide Random Game Button
-                    loadFavoriteGames();
                 }
                 content.style.opacity = 1; // Fade in
             }, 300);
@@ -542,22 +515,11 @@
         function filterGames(category) {
             const gameGrid = document.getElementById('gameGrid');
             if (category === 'all') {
-                gameGrid.innerHTML = games.map(game => `
-                    <button onclick="openGame('${game.url}')" id="${game.name}">
-                        ${game.name}
-                        <span class="heart" onclick="toggleFavorite('${game.name}')">&#10084;</span>
-                    </button>
-                `).join('');
+                gameGrid.innerHTML = games.map(game => `<button onclick="openGame('${game.url}')">${game.name}</button>`).join('');
             } else {
                 const filteredGames = games.filter(game => game.category === category);
-                gameGrid.innerHTML = filteredGames.map(game => `
-                    <button onclick="openGame('${game.url}')" id="${game.name}">
-                        ${game.name}
-                        <span class="heart" onclick="toggleFavorite('${game.name}')">&#10084;</span>
-                    </button>
-                `).join('');
+                gameGrid.innerHTML = filteredGames.map(game => `<button onclick="openGame('${game.url}')">${game.name}</button>`).join('');
             }
-            loadFavorites();
         }
 
         // Change Colors Function
@@ -619,49 +581,6 @@
                 alert('Invalid username or password');
             }
         });
-
-        // Function to toggle favorite
-        function toggleFavorite(gameName) {
-            const favoriteGames = JSON.parse(localStorage.getItem('favoriteGames')) || [];
-            if (favoriteGames.includes(gameName)) {
-                favoriteGames.splice(favoriteGames.indexOf(gameName), 1);
-            } else {
-                favoriteGames.push(gameName);
-            }
-            localStorage.setItem('favoriteGames', JSON.stringify(favoriteGames));
-            loadFavorites();
-            loadFavoriteGames();
-        }
-
-        // Function to load favorites
-        function loadFavorites() {
-            const favoriteGames = JSON.parse(localStorage.getItem('favoriteGames')) || [];
-            const gameButtons = document.querySelectorAll('.game-grid button');
-            gameButtons.forEach(button => {
-                const gameName = button.id;
-                if (favoriteGames.includes(gameName)) {
-                    button.querySelector('.heart').style.color = 'red';
-                } else {
-                    button.querySelector('.heart').style.color = '';
-                }
-            });
-        }
-
-        // Function to load favorite games
-        function loadFavoriteGames() {
-            const favoriteGames = JSON.parse(localStorage.getItem('favoriteGames')) || [];
-            const favoriteGameGrid = document.getElementById('favoriteGames');
-            favoriteGameGrid.innerHTML = favoriteGames.map(gameName => {
-                const game = games.find(game => game.name === gameName);
-                return `
-                    <button onclick="openGame('${game.url}')" id="${gameName}">
-                        ${gameName}
-                        <span class="heart" onclick="toggleFavorite('${gameName}')">&#10084;</span>
-                    </button>
-                `;
-            }).join('');
-            loadFavorites();
-        }
     </script>
 </body>
 </html>
