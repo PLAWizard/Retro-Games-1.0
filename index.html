@@ -288,6 +288,7 @@
         <button onclick="showContent('changelog')">Changelog</button>
         <button onclick="showContent('request')">Request Game</button>
         <button onclick="showContent('settings')">Settings</button>
+        <button onclick="showLogin()">Log In</button>
     </div>
 
     <!-- Content Section -->
@@ -323,6 +324,32 @@
     <footer>
         &copy; 2025 Retro Unblocked. All rights reserved.
     </footer>
+
+    <!-- Login Form -->
+    <div id="login-form" style="display: none;">
+        <h2>Log In</h2>
+        <form id="login-form-data">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <button type="submit">Log In</button>
+            <button onclick="showSignup()">Sign Up</button>
+        </form>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signup-form" style="display: none;">
+        <h2>Sign Up</h2>
+        <form id="signup-form-data">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <button type="submit">Sign Up</button>
+            <button onclick="showLogin()">Back to Log In</button>
+        </form>
+    </div>
 
     <!-- JavaScript -->
     <script>
@@ -438,6 +465,36 @@
                     document.getElementById('searchContainer').style.display = 'none';
                     document.getElementById('categoryButtons').style.display = 'none';
                     document.getElementById('randomGameButton').style.display = 'none'; // Hide Random Game Button
+                } else if (section === 'login') {
+                    content.innerHTML = `
+                    <h2>Log In</h2>
+                    <form id="login-form-data">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username"><br><br>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password"><br><br>
+                        <button type="submit">Log In</button>
+                        <button onclick="showSignup()">Sign Up</button>
+                    </form>
+                    `;
+                    document.getElementById('searchContainer').style.display = 'none';
+                    document.getElementById('categoryButtons').style.display = 'none';
+                    document.getElementById('randomGameButton').style.display = 'none'; // Hide Random Game Button
+                } else if (section === 'signup') {
+                    content.innerHTML = `
+                    <h2>Sign Up</h2>
+                    <form id="signup-form-data">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username"><br><br>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password"><br><br>
+                        <button type="submit">Sign Up</button>
+                        <button onclick="showLogin()">Back to Log In</button>
+                    </form>
+                    `;
+                    document.getElementById('searchContainer').style.display = 'none';
+                    document.getElementById('categoryButtons').style.display = 'none';
+                    document.getElementById('randomGameButton').style.display = 'none'; // Hide Random Game Button
                 }
                 content.style.opacity = 1; // Fade in
             }, 300);
@@ -490,6 +547,40 @@
                 }
             });
         }
+
+        // Function to show the login form
+        function showLogin() {
+            showContent('login');
+        }
+
+        // Function to show the signup form
+        function showSignup() {
+            showContent('signup');
+        }
+
+        // Function to handle signup form submission
+        document.getElementById('signup-form-data').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            // Store the username and password in local storage
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+            alert('Signup successful!');
+        });
+
+        // Function to handle login form submission
+        document.getElementById('login-form-data').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            // Check if the username and password match the stored values
+            if (username === localStorage.getItem('username') && password === localStorage.getItem('password')) {
+                alert('Login successful!');
+            } else {
+                alert('Invalid username or password');
+            }
+        });
     </script>
 </body>
 </html>
